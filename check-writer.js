@@ -48,6 +48,15 @@ const integerToWords = number => {
     }
     return `${integerToWords(thousands)} thousand`;
   }
+
+  if (number < 1000000000) {
+    const millions = Math.floor(number / 1000000);
+    const remainder = number % 1000000;
+    if (remainder) {
+      return `${integerToWords(millions)} million ${integerToWords(remainder)}`;
+    }
+    return `${integerToWords(millions)} million`;
+  }
 };
 
 const capitalize = string => string.charAt(0).toLocaleUpperCase() + string.slice(1);
